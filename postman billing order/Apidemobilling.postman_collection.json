@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "ad214c7d-64a4-455b-b007-78242d6e1983",
+		"name": "Apidemobilling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE biling order Test",
+			"item": [
+				{
+					"name": "POST post record",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"//Assertions\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"HARIKA\");\r",
+									"});\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+									"\r",
+									" \r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"console.log(jsonData.id)\r",
+									"pm.environment.set(\"id\", jsonData.id);\r",
+									"\r",
+									"   "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"firstName\":\"{{firstName}}\",\r\n\"lastName\": \"{{lastname}}\",\r\n  \"addressLine1\": \"Greenbay\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"Auckland\",\r\n  \"comment\": \"string\",\r\n  \"email\": \"harika@gmail\",\r\n  \r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \r\n  \"phone\": \"23232132\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"string\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BillingOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BillingOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET single record copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{url}}{{port}}/BillingOrder/{{id}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}{{port}}"
+							],
+							"path": [
+								"BillingOrder",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE record Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"addressLine1\": \"Titirangi\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"Auckland\",\r\n  \"comment\": \"string\",\r\n  \"email\": \"harika@gmail\",\r\n  \"firstName\": \"suhrutha\",\r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \"lastName\": \"jack\",\r\n  \"phone\": \"23232132\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"string\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/BillingOrder/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"BillingOrder",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT record",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"Titirangi\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"Auckland\",\r\n  \"comment\": \"string\",\r\n  \"email\": \"harika@gmail\",\r\n  \"firstName\": \"suhrutha\",\r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \"lastName\": \"jack\",\r\n  \"phone\": \"23232132\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"string\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/BillingOrder/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BillingOrder",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"addressLine1\": \"sweetie\",\r\n  \"addressLine2\": \"string\",\r\n  \"city\": \"string\",\r\n  \"comment\": \"string\",\r\n  \"email\": \"string\",\r\n  \"firstName\": \"string\",\r\n  \"id\": 0,\r\n  \"itemNumber\": 0,\r\n  \"lastName\": \"string\",\r\n  \"phone\": \"string\",\r\n  \"state\": \"AL\",\r\n  \"zipCode\": \"string\"\r\n}\r\n201\t\r\nCreated\r\n  "
+				},
+				"url": {
+					"raw": "http://localhost:8080/BillingOrder/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BillingOrder",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
